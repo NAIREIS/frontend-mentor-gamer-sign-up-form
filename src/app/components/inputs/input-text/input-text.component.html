@@ -1,0 +1,13 @@
+<div class="input-container">
+    <label>
+        <span class="chevron">›</span>
+        {{ label }}
+    </label>
+
+    <input type="text" [value]="value ?? ''" [placeholder]="placeholder" [disabled]="disabled" [required]="required"
+        (input)="handleInput($event)" (blur)="handleBlur()" />
+
+    <span class="input-error" *ngFor="let error of onErrors()">
+        {{ error }}
+    </span>
+</div>
