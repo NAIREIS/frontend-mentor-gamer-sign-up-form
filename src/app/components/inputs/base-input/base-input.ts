@@ -8,11 +8,12 @@ export abstract class BaseInputComponent<T>
   @Input() label = '';
   @Input() placeholder = '';
   @Input() required = false;
+  @Input() information: string | null = null;
 
+  inputId = '1'
   value: T | null = null;
   disabled = false;
   touched = false;
-
 
    constructor(
     @Optional() @Self() public ngControl: NgControl

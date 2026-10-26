@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { InputsModule } from './components/inputs/inputs.module';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ButtonsModule } from './components/buttons/buttons.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserModule,
     AppRoutingModule,
     InputsModule,
+    ButtonsModule,
     ReactiveFormsModule
   ],
   providers: [],

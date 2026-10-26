@@ -1,0 +1,71 @@
+$border-color: #525B64
+$focus-color: #ffffff
+$background-color: #06090E
+$secondary-color: #BEF538
+$background-icon-checkbox-color: #0B121A
+
+:host
+    display: flex
+    gap: 15px
+
+.checkbox-label
+    display: inline-flex
+    align-items: center
+    gap: 10px
+    cursor: pointer
+    user-select: none
+
+.checkbox-control
+    appearance: none
+    -webkit-appearance: none
+
+    width: 24px
+    height: 24px
+    margin: 0
+    flex-shrink: 0
+
+    border: 1.5px solid $secondary-color
+    background: transparent
+
+    display: grid
+    place-content: center
+
+    cursor: pointer
+    transition: background-color 0.2s, border-color 0.2s
+
+    &::after
+        content: ""
+        width: 5px
+        height: 9px
+        border: solid $background-icon-checkbox-color
+        border-width: 0 2px 2px 0
+        transform: rotate(45deg) scale(0)
+        transition: transform 0.15s
+
+    &:checked
+        background-color: $secondary-color
+        border-color: $secondary-color
+
+        &::after
+            transform: rotate(45deg) scale(1)
+
+    &:focus-visible
+        outline: 2px solid $secondary-color
+        outline-offset: 3px
+
+    &:disabled
+        background-color: #e5e7eb
+        border-color: #d1d5db
+        cursor: not-allowed
+
+        &:checked
+            background-color: #9ca3af
+
+
+    
+
+.checkbox-control:disabled + .checkbox-text
+    color: #999
+
+.checkbox-label:has(.checkbox-control:disabled)
+    cursor: not-allowed

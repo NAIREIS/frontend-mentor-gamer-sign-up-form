@@ -1,0 +1,103 @@
+$border-color: #525B64
+$font-color: #7D8C9D
+$label-color: #D9D9D9
+$focus-color: #BEF538
+$background-color: #06090E
+$secondary-color: #BEF538
+
+$danger-color: #DC3545
+$warning-color: #FFC107
+$success-color: #198754
+$disabled-background: #17212B
+$muted-color: #818E9F
+
+.input-field
+  display: flex
+  flex-direction: column
+  gap: 6px
+  width: 100%
+  color: $font-color
+
+  &__label
+    display: flex
+    align-items: center
+    gap: 10px
+    color: $label-color
+    margin-bottom: 0.5rem
+    font-size: 0.75rem
+    font-weight: 400
+    text-transform: uppercase
+    letter-spacing: 0.16em
+    cursor: pointer
+
+  &__chevron
+    display: inline-flex
+    align-items: center
+    justify-content: center
+    color: $secondary-color
+    font-size: 1rem
+    line-height: 1
+
+  &__control
+    display: flex
+    align-items: center
+    position: relative
+    width: 100%
+    min-height: 48px
+    border: 1px solid $border-color
+    background-color: $background-color
+    outline: 2px solid transparent
+    outline-offset: 3px
+    transition: border-color 0.2s ease, outline-color 0.2s ease
+
+    // Foco aplicado ao container externo
+    &:focus-within
+      border-color: $focus-color
+      outline-color: $focus-color
+
+    // Estado desabilitado
+    &:has(.input-field__input:disabled)
+      background-color: $disabled-background
+      border-color: #39434D
+      outline: none
+      cursor: not-allowed
+
+  &__input
+    flex: 1
+    min-width: 0
+    width: 100%
+    padding: 16px 12px
+    border: 0
+    outline: none
+    box-shadow: none
+    background: transparent
+    color: var(--neutral-50)
+    font-size: 0.875rem
+
+    &::placeholder
+      color: $muted-color
+      opacity: 1
+
+    &:focus
+      outline: none
+      box-shadow: none
+
+    &:disabled
+      cursor: not-allowed
+      color: $muted-color
+
+  &__errors
+    display: flex
+    flex-direction: column
+    gap: 4px
+
+  &__error
+    margin-top: 8px
+    color: $danger-color
+    font-size: 0.75rem
+    line-height: 1.4
+
+  &__info
+    margin-top: 8px
+    font-size: 0.75rem
+    line-height: 1.4

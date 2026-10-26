@@ -1,0 +1,60 @@
+.btn
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  gap: 8px
+  border: 1px solid transparent
+  border-radius: 4px
+  font-weight: 600
+  cursor: pointer
+  transition: background-color 0.2s ease, border-color 0.2s ease
+
+  &:disabled
+    opacity: 0.5
+
+  &--primary
+    background: #BEF538
+    color: #06090E
+
+    &:hover:not(:disabled)
+      background: #d0ff64
+
+  &--secondary
+    background: transparent
+    color: #d9d9d9
+    border-color: #303C4B
+
+  &--danger
+    background: #dc3545
+    color: #ffffff
+
+  &--small
+    padding: 6px 12px
+    font-size: 0.75rem
+
+  &--medium
+    padding: 10px 16px
+    font-size: 0.875rem
+
+  &--large
+    padding: 14px 20px
+    font-size: 1rem
+
+  &--loading
+    cursor: wait
+
+  &--full
+    width: 100%
+
+
+.btn__spinner
+  width: 14px
+  height: 14px
+  border: 2px solid currentColor
+  border-right-color: transparent
+  border-radius: 50%
+  animation: btn-spin 0.7s linear infinite
+
+@keyframes btn-spin
+  to
+    transform: rotate(360deg)

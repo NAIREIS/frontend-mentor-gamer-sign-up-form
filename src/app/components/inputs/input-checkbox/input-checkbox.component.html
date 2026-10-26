@@ -1,0 +1,13 @@
+<label class="checkbox-label">
+  <input
+    class="checkbox-control"
+    type="checkbox"
+    [checked]="checked"
+    [disabled]="disabled"
+    (change)="handleChange($event)"
+  />
+</label>
+
+<div class="checkbox-text">
+   <ng-content></ng-content>
+</div>

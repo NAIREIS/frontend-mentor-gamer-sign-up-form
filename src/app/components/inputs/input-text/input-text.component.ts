@@ -8,6 +8,8 @@ import { BaseInputComponent } from '../base-input/base-input';
 })
 export class InputTextComponent extends BaseInputComponent<string> {
 
+  
+
   handleInput(event: Event): void {
     const input = event.target as HTMLInputElement;
     this.updateValue(input.value);
