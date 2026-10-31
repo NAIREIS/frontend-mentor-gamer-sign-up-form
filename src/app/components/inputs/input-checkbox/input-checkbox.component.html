@@ -1,6 +1,9 @@
 
 <div class="checkbox">
-  <label class="checkbox__label">
+  
+
+  <div class="checkbox__content">
+    <label class="checkbox__label">
     <input
       class="checkbox__control"
       type="checkbox"
@@ -9,12 +12,13 @@
       (change)="handleChange($event)"
     />
   </label>
-
-  <div class="checkbox__content">
     <div class="checkbox__text">
       <ng-content></ng-content>
     </div>
 
+  </div>
+
+  
     <div
       *ngIf="errors as error; else hintBlock"
       class="checkbox__feedback"
@@ -33,5 +37,4 @@
         {{ information }}
       </span>
     </ng-template>
-  </div>
 </div>
