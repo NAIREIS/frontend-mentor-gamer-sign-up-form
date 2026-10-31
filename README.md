@@ -6,9 +6,9 @@ A responsive gamer sign-up form built with Angular, TypeScript, and SCSS. This p
 
 ![NEONCORE Gamer Sign-up Form](./preview.png)
 
-**Live Demo:** [View Live Site](YOUR_LIVE_SITE_URL)
+**Live Demo:** [View Live Site](https://naireis.github.io/frontend-mentor-gamer-sign-up-form/)
 
-**Frontend Mentor Challenge:** [View Challenge](YOUR_FRONTEND_MENTOR_CHALLENGE_URL)
+**Frontend Mentor Challenge:** [View Challenge](https://www.frontendmentor.io/profile/NAIREIS)
 
 ## Features
 
@@ -114,4 +114,4 @@ http://localhost:4200/
 **Naiane Reis**
 
 - GitHub: [@NaianeReis27](https://github.com/NAIREIS)
-- Frontend Mentor: [Your Frontend Mentor Profile](YOUR_FRONTEND_MENTOR_PROFILE_URL)
+- Frontend Mentor: [Your Frontend Mentor Profile](https://www.frontendmentor.io/profile/NAIREIS)
