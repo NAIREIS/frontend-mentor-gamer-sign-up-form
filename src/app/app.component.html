@@ -21,8 +21,8 @@
     <ng-container *ngIf="completed; else operatorStatus">
       <div class="brand__status-item brand__status-item--desktop">
         <span class="brand__status-label">OPERATOR ID</span>
-        <div class="brand__status-decoration"></div>
-        <span class="brand__status-value brand__status-value--success">PROVISIONED</span>
+        
+        <span class="brand__status-value brand__status-value--success completed">PROVISIONED</span>
       </div>
       <h3 class="brand__status-form brand__status-form--complete brand__status-form--desktop">
         {{ form.get('callsign')?.value }}
@@ -32,7 +32,7 @@
     <ng-template #operatorStatus>
       <div class="brand__status-item brand__status-item--desktop">
         <span class="brand__status-label">OPERATOR ID</span>
-        <div class="brand__status-decoration"></div>
+       
         <span
           class="brand__status-value brand__readiness"
           [class.brand__status-value--success]="readyCount === statuses.length"
@@ -48,7 +48,7 @@
 
     <div class="brand__status-item brand__status-item--mobile">
       <span class="brand__status-label">OPERATOR ID</span>
-      <div class="brand__status-decoration"></div>
+  
       <span class="brand__status-mobile-name">
         {{ form.get('callsign')?.value || 'UNASSIGNED' }}
       </span>

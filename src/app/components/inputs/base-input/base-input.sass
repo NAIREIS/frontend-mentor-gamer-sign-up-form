@@ -1,64 +1,54 @@
-$border-color: #525B64
-$font-color: #7D8C9D
-$label-color: #D9D9D9
-$focus-color: #BEF538
-$background-color: #06090E
-$secondary-color: #BEF538
-
-$danger-color: #ff837a
-$warning-color: #FFC107
-$success-color: #198754
-$disabled-background: #17212B
-$muted-color: #818E9F
-
 .input-field
   display: flex
   flex-direction: column
   gap: 4px
   width: 100%
-  color: $font-color
+  color: var(--neutral-400)
 
   &__label
     display: flex
     align-items: center
     gap: 10px
-    color: $label-color
     margin-bottom: 4px
+    color: var(--neutral-200)
     font-size: 0.75rem
     font-weight: 400
-    text-transform: uppercase
     letter-spacing: 0.16em
+    text-transform: uppercase
     cursor: pointer
 
   &__chevron
     display: inline-flex
     align-items: center
     justify-content: center
-    color: $secondary-color
+    color: var(--lime-500)
     font-size: 1rem
     line-height: 1
 
   &__control
+    position: relative
     display: flex
     align-items: center
-    position: relative
     width: 100%
     min-height: 48px
-    border: 1px solid $border-color
-    background-color: $background-color
+    border: 1px solid var(--border-strong)
+    background-color: var(--neutral-950)
     outline: 2px solid transparent
     outline-offset: 3px
     transition: border-color 0.2s ease, outline-color 0.2s ease
 
-    // Foco aplicado ao container externo
-    &:focus-within
-      border-color: $focus-color
-      outline-color: $focus-color
+    @media (prefers-reduced-motion: reduce)
+      transition: none
 
-    // Estado desabilitado
+    // Focus applied to the outer container
+    &:focus-within
+      border-color: var(--border-accent)
+      outline-color: var(--border-accent)
+
+    // Disabled state
     &:has(.input-field__input:disabled)
-      background-color: $disabled-background
-      border-color: #39434D
+      background-color: var(--surface-secondary)
+      border-color: var(--border-default)
       outline: none
       cursor: not-allowed
 
@@ -71,27 +61,24 @@ $muted-color: #818E9F
     outline: none
     box-shadow: none
     background: transparent
-    color: var(--neutral-50)
+    color: var(--text-primary)
     font-size: 0.875rem
 
-    input:-webkit-autofill,
-    input:-webkit-autofill:hover,
-    input:-webkit-autofill:focus,
-    input:-webkit-autofill:active
-      -webkit-box-shadow: 0 0 0 1000px #fff inset !important
-      -webkit-text-fill-color: #000 !important
-
     &::placeholder
-      color: $muted-color
+      color: var(--neutral-400)
       opacity: 1
 
-    &:focus
-      outline: none
-      box-shadow: none
-
     &:disabled
+      color: var(--neutral-400)
       cursor: not-allowed
-      color: $muted-color
+
+    &:-webkit-autofill,
+    &:-webkit-autofill:hover,
+    &:-webkit-autofill:focus,
+    &:-webkit-autofill:active
+      -webkit-box-shadow: 0 0 0 1000px var(--neutral-950) inset !important
+      -webkit-text-fill-color: var(--text-primary) !important
+      caret-color: var(--text-primary)
 
   &__errors
     display: flex
@@ -99,22 +86,23 @@ $muted-color: #818E9F
     gap: 4px
 
   &__error
-    margin-top: 4px
-    color: $danger-color
-    font-size: 0.75rem
     display: flex
-    gap: .5rem
     align-items: center
+    gap: 0.5rem
+    margin-top: 4px
+    color: var(--red-400)
+    font-size: 0.75rem
     line-height: 1.4
+
     &::before
+      content: ""
       display: inline-block
-      content: ''
       width: 15px
       height: 15px
+      background-image: url("../../../../assets/images/icon-alert.svg")
       background-repeat: no-repeat
       background-position: bottom center
       background-size: contain
-      background-image: url('../../../../assets/images/icon-alert.svg')
 
   &__hint
     margin-top: 4px
@@ -122,10 +110,9 @@ $muted-color: #818E9F
     line-height: 1.4
 
 :host(.ng-invalid.ng-touched)
-  .input-field
-    &__control
-      border-color: $danger-color
+  .input-field__control
+    border-color: var(--red-400)
 
-      &:focus-within
-        border-color: $danger-color
-        outline-color: $danger-color
+    &:focus-within
+      border-color: var(--red-400)
+      outline-color: var(--red-400)
