@@ -5,7 +5,7 @@ $focus-color: #BEF538
 $background-color: #06090E
 $secondary-color: #BEF538
 
-$danger-color: #DC3545
+$danger-color: #ff837a
 $warning-color: #FFC107
 $success-color: #198754
 $disabled-background: #17212B
@@ -14,7 +14,7 @@ $muted-color: #818E9F
 .input-field
   display: flex
   flex-direction: column
-  gap: 6px
+  gap: 4px
   width: 100%
   color: $font-color
 
@@ -23,7 +23,7 @@ $muted-color: #818E9F
     align-items: center
     gap: 10px
     color: $label-color
-    margin-bottom: 0.5rem
+    margin-bottom: 4px
     font-size: 0.75rem
     font-weight: 400
     text-transform: uppercase
@@ -66,13 +66,20 @@ $muted-color: #818E9F
     flex: 1
     min-width: 0
     width: 100%
-    padding: 16px 12px
+    padding: 12px
     border: 0
     outline: none
     box-shadow: none
     background: transparent
     color: var(--neutral-50)
     font-size: 0.875rem
+
+    input:-webkit-autofill,
+    input:-webkit-autofill:hover,
+    input:-webkit-autofill:focus,
+    input:-webkit-autofill:active
+      -webkit-box-shadow: 0 0 0 1000px #fff inset !important
+      -webkit-text-fill-color: #000 !important
 
     &::placeholder
       color: $muted-color
@@ -92,12 +99,33 @@ $muted-color: #818E9F
     gap: 4px
 
   &__error
-    margin-top: 8px
+    margin-top: 4px
     color: $danger-color
+    font-size: 0.75rem
+    display: flex
+    gap: .5rem
+    align-items: center
+    line-height: 1.4
+    &::before
+      display: inline-block
+      content: ''
+      width: 15px
+      height: 15px
+      background-repeat: no-repeat
+      background-position: bottom center
+      background-size: contain
+      background-image: url('../../../../assets/images/icon-alert.svg')
+
+  &__hint
+    margin-top: 4px
     font-size: 0.75rem
     line-height: 1.4
 
-  &__info
-    margin-top: 8px
-    font-size: 0.75rem
-    line-height: 1.4
+:host(.ng-invalid.ng-touched)
+  .input-field
+    &__control
+      border-color: $danger-color
+
+      &:focus-within
+        border-color: $danger-color
+        outline-color: $danger-color

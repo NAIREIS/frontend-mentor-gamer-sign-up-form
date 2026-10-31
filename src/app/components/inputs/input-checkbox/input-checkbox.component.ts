@@ -10,10 +10,15 @@ export class InputCheckboxComponent extends BaseInputComponent<boolean> {
 
   checked = false;
 
+  override writeValue(value: boolean | null): void {
+    this.checked = value ?? false;
+    super.writeValue(this.checked);
+  }
+
   handleChange(event: Event): void {
     const input = event.target as HTMLInputElement
     this.checked = input.checked;
-    this.onChange(this.checked);
-    this.onTouched();
+    this.updateValue(this.checked);
+    this.markAsTouched();
   }
 }

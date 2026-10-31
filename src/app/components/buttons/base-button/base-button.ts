@@ -11,11 +11,11 @@ export abstract class BaseButtonComponent {
   @Input() format: 'full' | 'fit' | 'square' = 'full';
   get buttonClasses(): string[] {
     return [
-      'btn',
-      `btn--${this.variant}`,
-      `btn--${this.size}`,
-      `btn--${this.format}`,
-      ...(this.loading ? ['btn--loading'] : [])
+      'button',
+      `button--${!this.loading ? this.variant: 'secondary'}`,
+      `button--${this.size}`,
+      `button--${this.format}`,
+      ...(this.loading ? ['button--loading'] : [])
     ];
   }
 }

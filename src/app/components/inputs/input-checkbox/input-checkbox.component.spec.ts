@@ -15,7 +15,20 @@ describe('InputCheckboxComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+  it('should write the form value to the checkbox', () => {
+    component.writeValue(true);
+    fixture.detectChanges();
+
+    const input = fixture.nativeElement.querySelector('input') as HTMLInputElement;
+    expect(input.checked).toBeTrue();
+  });
+
+  it('should update its value and touched state when changed', () => {
+    const input = fixture.nativeElement.querySelector('input') as HTMLInputElement;
+    input.checked = true;
+    input.dispatchEvent(new Event('change'));
+
+    expect(component.value).toBeTrue();
+    expect(component.touched).toBeTrue();
   });
 });

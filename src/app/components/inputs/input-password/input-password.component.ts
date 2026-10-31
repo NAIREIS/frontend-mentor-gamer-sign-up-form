@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { BaseInputComponent } from '../base-input/base-input';
 
-type PasswordStrength = '' | 'weak' | 'medium' | 'good' | 'strong';
+type PasswordStrength = '' | 'weak' | 'fair' | 'good' | 'strong';
 
 @Component({
   selector: 'app-input-password',
@@ -24,7 +24,7 @@ export class InputPasswordComponent extends BaseInputComponent<string> {
     this.updateValue(input.value);
   }
 
-  onErrors(): string[] {
+  onErrors(): string | null {
     return this.errors
   }
 
@@ -43,10 +43,10 @@ export class InputPasswordComponent extends BaseInputComponent<string> {
     if (/\d/.test(password)) score++;
     if (/[^a-zA-Z0-9]/.test(password)) score++;
 
-    if (score <= 2) return 'weak';
-    if (score === 3) return 'medium';
-    if (score === 4) return 'good';
 
+    if (score <= 2) return 'weak';
+    if (score === 3) return 'fair';
+    if (score === 4) return 'good';
     return 'strong';
   }
 }

@@ -3,7 +3,5 @@
   [disabled]="disabled || loading"
   [class]="buttonClasses.join(' ')"
 >
-  <span *ngIf="loading" class="btn__spinner"></span>
-  <span>{{ loading ? 'Carregando...' : label }}</span>
-  <ng-content></ng-content>
+  <span>{{ loading ? 'TRANSMITTING_' : label }}</span>
 </button>

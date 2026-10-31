@@ -5,17 +5,18 @@ import { ControlValueAccessor, NgControl } from '@angular/forms';
 export abstract class BaseInputComponent<T>
   implements ControlValueAccessor {
 
+  private static nextInputId = 0;
+
   @Input() label = '';
   @Input() placeholder = '';
   @Input() required = false;
   @Input() information: string | null = null;
-
-  inputId = '1'
+  @Input() inputId = `input-${BaseInputComponent.nextInputId++}`;
   value: T | null = null;
   disabled = false;
   touched = false;
 
-   constructor(
+  constructor(
     @Optional() @Self() public ngControl: NgControl
   ) {
     if (this.ngControl) {
@@ -24,8 +25,8 @@ export abstract class BaseInputComponent<T>
   }
 
 
-  protected onChange: (value: T | null) => void = () => {};
-  protected onTouched: () => void = () => {};
+  protected onChange: (value: T | null) => void = () => { };
+  protected onTouched: () => void = () => { };
 
   writeValue(value: T | null): void {
     this.value = value;
@@ -56,23 +57,27 @@ export abstract class BaseInputComponent<T>
   }
 
 
-  get errors(): string[] {
+  get errors(): string | null {
     const control = this.ngControl?.control;
 
-    if (!control || !control.errors || !(control.touched || control.dirty)) {
-      return [];
+    if (!control || !control.errors || !control.touched) {
+      return null;
     }
 
     const messages: Record<string, string> = {
-      required: 'Campo obrigatório',
-      email: 'E-mail inválido',
-      minlength: `Mínimo de ${control.errors['minlength']?.requiredLength} caracteres`,
-      maxlength: `Máximo de ${control.errors['maxlength']?.requiredLength} caracteres`,
-      pattern: 'Formato inválido'
+      required: 'Required',
+      email: 'Enter a valid email, like you@example.com',
+      minlength: `Use at least ${control.errors['minlength']?.requiredLength} characters`,
+      maxlength: `Use no more than ${control.errors['maxlength']?.requiredLength} characters`,
+      pattern: 'Invalid format',
+      passwordMismatch: "Passwords don't match",
+      passwordWeak: 'Your password is too weak. Choose a stronger password',
+      passwordFair: 'Add more variety to your password',
+      acceptanceRequired: 'Accept the terms to continue',
     };
 
-    return Object.keys(control.errors).map(
-      error => messages[error] ?? 'Campo inválido'
-    );
+    const error = Object.keys(control.errors).at(-1);
+
+    return error ? messages[error] ?? 'Invalid field' : null;
   }
 }

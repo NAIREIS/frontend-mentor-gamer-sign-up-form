@@ -18,7 +18,7 @@ export class InputTextComponent extends BaseInputComponent<string> {
   handleBlur(): void {
     this.markAsTouched();
   }
-  onErrors(): string[] {
+  onErrors(): string | null {
    return this.errors
   }
 
