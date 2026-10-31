@@ -1,0 +1,155 @@
+<section class="brand">
+  <header class="brand__header">
+    <div class="brand__topbar">
+      <img class="brand__logo" src="assets/images/logo.svg" alt="NEONCORE logo" />
+      <span
+        class="brand__mobile-state"
+        [class.brand__mobile-state--success]="completed || readyCount === statuses.length"
+      >
+        {{ completed ? 'PROVISIONED' : readyCount + '/' + statuses.length + ' READY' }}
+      </span>
+    </div>
+
+    <h1 class="brand__title">JOIN THE NEXUS</h1>
+
+    <p class="brand__subtitle">
+      Initialize your neoncore identity
+    </p>
+  </header>
+
+  <div class="brand__status">
+    <ng-container *ngIf="completed; else operatorStatus">
+      <div class="brand__status-item brand__status-item--desktop">
+        <span class="brand__status-label">OPERATOR ID</span>
+        
+        <span class="brand__status-value brand__status-value--success completed">PROVISIONED</span>
+      </div>
+      <h3 class="brand__status-form brand__status-form--complete brand__status-form--desktop">
+        {{ form.get('callsign')?.value }}
+      </h3>
+    </ng-container>
+
+    <ng-template #operatorStatus>
+      <div class="brand__status-item brand__status-item--desktop">
+        <span class="brand__status-label">OPERATOR ID</span>
+       
+        <span
+          class="brand__status-value brand__readiness"
+          [class.brand__status-value--success]="readyCount === statuses.length"
+          [class.brand__status-value--pending]="readyCount !== statuses.length"
+        >
+          {{ readyCount }}/{{ statuses.length }} READY
+        </span>
+      </div>
+      <h3 class="brand__status-form brand__status-form--complete brand__status-form--desktop">
+        {{ form.get('callsign')?.value || 'UNASSIGNED' }}
+      </h3>
+    </ng-template>
+
+    <div class="brand__status-item brand__status-item--mobile">
+      <span class="brand__status-label">OPERATOR ID</span>
+  
+      <span class="brand__status-mobile-name">
+        {{ form.get('callsign')?.value || 'UNASSIGNED' }}
+      </span>
+    </div>
+
+    <ng-container *ngFor="let status of statuses">
+      <div class="brand__status-item brand__status-item--detail">
+        <span class="brand__status-label">{{ status.label }}</span>
+        <div class="brand__status-decoration"></div>
+        <span
+          class="brand__status-value"
+          [ngClass]="getStatusClass(status)"
+          [attr.data-status-control]="status.control"
+        >
+          {{ completed ? 'LOCKED' : getStatusError(status) }}
+        </span>
+      </div>
+    </ng-container>
+  </div>
+</section>
+
+<!-- Signup / Formulário de cadastro -->
+<section class="signup">
+  <form class="signup__form" [formGroup]="form" (ngSubmit)="submit()">
+
+    <ng-container *ngIf="!completed; else notComplete">
+      <header class="signup__header">
+        <h2 class="signup__title">New operator</h2>
+
+        <p class="signup__subtitle">
+          All fields required
+        </p>
+      </header>
+
+      <div class="signup__fields">
+        <app-input-text class="signup__field" [label]="'Callsign'" formControlName="callsign"
+          [placeholder]="'e.g. Vortex_07'" [information]="'3-20 characters: letters, numbers, _ or -'"></app-input-text>
+
+        <app-input-text class="signup__field" [label]="'Email'" formControlName="email"
+          [placeholder]="'you@example.com'"></app-input-text>
+
+        <app-input-password class="signup__field" [label]="'Password'" formControlName="password"
+          [placeholder]="'Enter password'" [information]="'At least 8 characters'"></app-input-password>
+
+        <app-input-password class="signup__field" [label]="'Confirm Password'" formControlName="confirmPassword"
+          [placeholder]="'Confirm password'" [passwordStrengthBar]="false"></app-input-password>
+      </div>
+
+      <div class="signup__footer">
+        <app-input-checkbox class="signup__terms" formControlName="acceptTerms">
+          <span>
+            I accept the
+            <a class="signup__legal-link" href="/terms">
+              Terms
+            </a>
+            and
+            <a class="signup__legal-link" href="/privacy">
+              Privacy Policy
+            </a>
+          </span>
+        </app-input-checkbox>
+        <app-button-main class="signup__submit" [loading]="loading" label="INITIALIZE ACCOUNT" format="full"
+          type="submit">
+        </app-button-main>
+
+        <p class="signup__login-prompt">
+          Already an operator?
+          <a class="signup__login-link" href="/login">
+            Log in
+          </a>
+        </p>
+      </div>
+    </ng-container>
+
+
+    <ng-template #notComplete>
+      <section class="signup__success" role="status" aria-live="polite">
+        <img
+          class="signup__success-icon"
+          src="assets/images/icon-hex-check.svg"
+          alt=""
+          width="78"
+          height="72"
+        />
+
+        <h2 class="signup__success-title">HANDSHAKE COMPLETE</h2>
+
+        <p class="signup__success-message">
+          Operator <strong>{{ form.get('callsign')?.value }}</strong> provisioned. Your account is ready.
+        </p>
+
+
+        <app-button-main
+          class="signup__success-continue"
+          label="CONTINUE TO LOG IN"
+          format="full"
+          type="button"
+        ></app-button-main>
+      </section>
+    </ng-template>
+
+  </form>
+
+</section>

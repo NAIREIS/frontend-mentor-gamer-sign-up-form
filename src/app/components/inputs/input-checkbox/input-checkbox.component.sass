@@ -1,0 +1,119 @@
+
+$border-color: #525B64
+$focus-color: #ffffff
+$background-color: #06090E
+$secondary-color: #BEF538
+$background-icon-checkbox-color: #0B121A
+
+$danger-color: #ff837a
+$warning-color: #FFC107
+$success-color: #198754
+$disabled-background: #17212B
+$muted-color: #818E9F
+
+:host
+    display: flex
+    gap: 15px
+
+.checkbox
+    display: flex
+    align-items: center
+    gap: 10px
+
+    &__label
+        display: inline-flex
+        align-items: center
+        cursor: pointer
+        user-select: none
+        flex-shrink: 0
+
+    &__control
+        appearance: none
+        -webkit-appearance: none
+
+        width: 24px
+        height: 24px
+        margin: 0
+        flex-shrink: 0
+
+        border: 1.5px solid $secondary-color
+        border-radius: 4px
+        background: transparent
+
+        display: grid
+        place-content: center
+
+        cursor: pointer
+        transition: background-color 0.2s, border-color 0.2s
+
+        &::after
+            content: ""
+            width: 5px
+            height: 9px
+            border: solid $background-icon-checkbox-color
+            border-width: 0 2px 2px 0
+            transform: rotate(45deg) scale(0)
+            transition: transform 0.15s
+
+        &:checked
+            background-color: $secondary-color
+            border-color: $secondary-color
+
+            &::after
+                transform: rotate(45deg) scale(1)
+
+
+        &:disabled
+            background-color: $disabled-background
+            border-color: $border-color
+            cursor: not-allowed
+
+            &:checked
+                background-color: $muted-color
+                border-color: $muted-color
+
+            &::after
+                border-color: $background-color
+
+    &__content
+        display: flex
+        flex-direction: column
+        min-width: 0
+
+    &__text
+        color: $focus-color
+        line-height: 1.5
+
+    &__feedback
+        margin-top: 8px
+        display: flex
+        gap: 0.5rem
+        align-items: center
+        line-height: 1.4
+        font-size: 0.75rem
+
+    &__error
+        color: $danger-color
+
+    &__hint
+        display: block
+        margin-top: 4px
+        color: $muted-color
+        font-size: 0.75rem
+        line-height: 1.4
+
+    &--disabled
+        .checkbox__label
+            cursor: not-allowed
+
+        .checkbox__text,
+        .checkbox__hint
+            color: $muted-color
+
+:host(.ng-invalid.ng-touched)
+  .checkbox__control
+      border-color: $danger-color
+
+      &:focus-within
+        border-color: $danger-color
+        outline-color: $danger-color

@@ -1,0 +1,37 @@
+
+<div class="checkbox">
+  <label class="checkbox__label">
+    <input
+      class="checkbox__control"
+      type="checkbox"
+      [checked]="checked"
+      [disabled]="disabled"
+      (change)="handleChange($event)"
+    />
+  </label>
+
+  <div class="checkbox__content">
+    <div class="checkbox__text">
+      <ng-content></ng-content>
+    </div>
+
+    <div
+      *ngIf="errors as error; else hintBlock"
+      class="checkbox__feedback"
+      aria-live="polite"
+    >
+      <span class="checkbox__error">
+        {{ error }}
+      </span>
+    </div>
+
+    <ng-template #hintBlock>
+      <span
+        *ngIf="information"
+        class="checkbox__hint"
+      >
+        {{ information }}
+      </span>
+    </ng-template>
+  </div>
+</div>

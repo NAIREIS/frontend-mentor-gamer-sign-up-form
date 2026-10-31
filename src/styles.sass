@@ -1,0 +1,101 @@
+@use './assets/sass/reset'
+@use './assets/sass/fonts'
+
+
+:root
+  // Neutral palette
+  --neutral-950: #06090E
+  --neutral-900: #0B1118
+  --neutral-800: #17212B
+  --neutral-700: #303F4B
+  --neutral-600: #5B6B7E
+  --neutral-500: #6E7E91
+  --neutral-400: #818E9F
+  --neutral-300: #A5B3C2
+  --neutral-200: #C8D3DF
+  --neutral-100: #E3ECF3
+  --neutral-50: #F3F8FB
+
+  // Lime palette
+  --lime-950: #263407
+  --lime-900: #3A500D
+  --lime-800: #4F6C15
+  --lime-700: #709C21
+  --lime-600: #94C72F
+  --lime-500: #B5F52E
+  --lime-400: #C6F76A
+  --lime-300: #D8FA99
+
+  // Status colors
+  --red-400: #FF8982
+  --red-500: #F04438
+  --amber-400: #FFC247
+  --amber-500: #F59E0B
+  --green-400: #4ADE80
+  --blue-400: #60A5FA
+
+  // Navy palette
+  --navy-950: #05070A
+  --navy-900: #0A0F16
+  --navy-800: #111B27
+
+  // Lime transparency (8-digit HEX: RRGGBBAA)
+  --lime-a60: #B5F59999
+  --lime-a40: #B5F56666
+  --lime-a20: #B5F53333
+  --lime-a10: #B5F51A
+
+  // Navy transparency
+  --navy-a80: #05070ACC
+  --navy-a60: #05070A99
+  --navy-a40: #05070A66
+
+  // Surface colors
+  --surface-base: var(--navy-950)
+  --surface-primary: var(--neutral-900)
+  --surface-secondary: var(--neutral-800)
+  --surface-elevated: #1B2733
+  --surface-hover: #202E3B
+
+  // Text colors
+  --text-primary: var(--neutral-50)
+  --text-secondary: var(--neutral-300)
+  --text-muted: var(--neutral-500)
+  --text-inverse: var(--navy-950)
+
+  // Borders
+  --border-subtle: #263441
+  --border-default: var(--neutral-700)
+  --border-strong: var(--neutral-600)
+  --border-accent: var(--lime-500)
+
+  // Typography
+  --font-display: "Orbitron", "Arial Black", system-ui, sans-serif
+  --font-mono: "JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace
+  --font-body: Inter, "Segoe UI", system-ui, sans-serif
+
+  // Focus and interaction
+  --focus-ring: 0 0 0 2px var(--surface-base), 0 0 0 4px var(--lime-500)
+  --focus-color: var(--lime-500)
+  --transition-fast: 150ms ease
+  --transition-normal: 250ms ease
+
+  // Radius and spacing
+  --radius-sm: 4px
+  --radius-md: 8px
+  --radius-lg: 12px
+  --radius-xl: 16px
+
+  // Shadows and glow
+  --shadow-card: 0 8px 24px #00000033
+  --glow-lime: 0 0 16px #B5F53333
+
+button,
+a,
+input,
+select,
+textarea,
+[tabindex]:not([tabindex="-1"])
+  &:focus-visible
+    outline: 2px solid var(--lime-500)
+    outline-offset: 3px

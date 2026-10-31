@@ -1,0 +1,416 @@
+$bp-tablet: 1100px
+$bp-mobile: 768px
+
+// ==============================
+// Host
+// ==============================
+
+:host
+  display: flex
+  flex-wrap: wrap
+  gap: 40px
+  width: 100%
+  max-width: 1500px
+  min-height: 100svh
+  margin: 0 auto
+  padding: 25px clamp(16px, 5vw, 100px)
+
+  @media (max-width: $bp-mobile)
+    flex-direction: column
+    align-items: stretch
+    gap: 24px
+    padding: 24px 16px 16px
+
+// ==============================
+// Brand
+// ==============================
+
+.brand
+  flex: 1
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  gap: 32px
+
+  @media (max-width: $bp-mobile)
+    flex: initial
+    align-items: stretch
+    gap: 16px
+
+  // --- Topbar (mobile layout only) ---
+
+  &__topbar
+    width: 100%
+    display: contents
+
+    @media (max-width: $bp-mobile)
+      display: flex
+      align-items: center
+      justify-content: space-between
+      gap: 12px
+
+  &__mobile-state
+    display: none
+
+    @media (max-width: $bp-mobile)
+      display: inline-flex
+      color: var(--neutral-400)
+      font-size: 0.75rem
+      font-weight: 600
+      letter-spacing: 0.06em
+      text-transform: uppercase
+      white-space: nowrap
+
+    &--success
+      @media (max-width: $bp-mobile)
+        color: var(--lime-500)
+
+  // --- Header ---
+
+  &__header
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    gap: 12px
+    width: 100%
+
+    @media (max-width: $bp-mobile)
+      gap: 16px
+
+  &__logo
+    display: block
+    height: auto
+    margin: 2rem 0
+    object-fit: contain
+
+    @media (max-width: $bp-mobile)
+      margin: 0
+
+  &__title
+    margin: 0
+    color: var(--neutral-100)
+    font-family: var(--font-display)
+    font-size: 4.5rem
+    font-weight: 700
+    line-height: 1.2
+    letter-spacing: 0.06em
+
+    @media (max-width: $bp-mobile)
+      font-size: 2rem
+      line-height: 1.15
+
+    &::before
+      content: "//"
+      margin-right: 12px
+      color: var(--lime-500)
+
+  &__subtitle
+    margin: 0
+    color: var(--neutral-400)
+    font-size: 0.875rem
+    line-height: 1.5
+    text-transform: uppercase
+
+    @media (max-width: $bp-mobile)
+      font-size: 0.75rem
+      letter-spacing: 0.08em
+
+  // --- Status ---
+
+  &__status
+    display: flex
+    flex-direction: column
+    gap: 12px
+    width: 100%
+    margin-top: 20px
+    padding: 40px 0
+    border-top: 1px solid var(--neutral-700)
+
+    @media (max-width: $bp-mobile)
+      gap: 0
+      margin-top: 0
+      padding: 16px 0 0
+
+  &__status-item
+    display: flex
+    align-items: center
+    justify-content: space-between
+    gap: 16px
+
+    &--mobile
+      display: none
+
+      @media (max-width: $bp-mobile)
+        display: flex
+
+    &--desktop,
+    &--detail
+      @media (max-width: $bp-mobile)
+        display: none
+
+  &__status-decoration
+    flex: 1
+    min-width: 24px
+    height: 1px
+    background-color: var(--neutral-600)
+
+  &__status-label
+    font-size: 0.75rem
+    letter-spacing: 0.05em
+    text-transform: uppercase
+
+  &__status-value
+    font-size: 0.75rem
+    white-space: nowrap
+
+    &--success
+      color: var(--text-primary)
+    &--success.completed
+      color: var(--lime-500)
+    &--error
+      color: var(--red-400)
+
+    &--pending,
+    &--locked
+      color: var(--neutral-400)
+
+  &__status-mobile-name
+    color: var(--neutral-100)
+    font-family: var(--font-mono)
+    font-size: 0.75rem
+    white-space: nowrap
+
+  &__status-form
+    font-family: var(--font-display)
+    font-size: 1.5rem
+    text-transform: uppercase
+    overflow-wrap: anywhere
+
+    &--desktop
+      @media (max-width: $bp-mobile)
+        display: none
+
+    &--complete
+      text-transform: none
+      overflow-wrap: normal
+
+    &--pending
+      color: var(--neutral-400)
+
+// ==============================
+// Signup
+// ==============================
+
+.signup
+  flex: 1
+  display: flex
+  justify-content: center
+  align-items: center
+
+  @media (max-width: $bp-mobile)
+    flex: initial
+
+  // --- Form container ---
+
+  &__form
+    position: relative
+    display: flex
+    flex-direction: column
+    gap: 24px
+    width: 100%
+    min-width: min(450px, 100%)
+    min-height: 724px
+    padding: 41px 39px 35px
+    background-color: var(--surface-primary)
+    border: 1px solid var(--border-default)
+    box-shadow: rgba(2, 2, 2, 0.2) 0 7px 29px 0
+
+    @media (max-width: $bp-tablet)
+      max-width: 100%
+
+    @media (max-width: $bp-mobile)
+      min-height: 0
+      gap: 20px
+      padding: 20px 19px
+
+    &::before,
+    &::after
+      content: ""
+      position: absolute
+      width: 1.5rem
+      height: 1.5rem
+      border: 2px solid var(--border-accent)
+      pointer-events: none
+
+    &::before
+      top: -2px
+      left: -2px
+      border-right: 0
+      border-bottom: 0
+
+    &::after
+      right: -2px
+      bottom: -2px
+      border-left: 0
+      border-top: 0
+
+  // --- Header ---
+
+  &__header
+    display: flex
+    justify-content: space-between
+    gap: 8px
+    padding-bottom: 10px
+    border-bottom: 1px solid var(--neutral-700)
+
+    @media (max-width: $bp-mobile)
+      align-items: baseline
+
+  &__title
+    margin: 0
+    color: var(--neutral-100)
+    line-height: 1.3
+    text-transform: uppercase
+    letter-spacing: 0.05em
+
+    @media (max-width: $bp-mobile)
+      font-size: 1rem
+      letter-spacing: 0.04em
+
+  &__subtitle
+    margin: 0
+    color: var(--neutral-400)
+    font-size: 0.875rem
+    line-height: 1.5
+    text-transform: uppercase
+
+    @media (max-width: $bp-mobile)
+      font-size: 0.625rem
+      letter-spacing: 0.04em
+
+  // --- Fields ---
+
+  &__fields
+    display: flex
+    flex-direction: column
+    gap: 25px
+
+    @media (max-width: $bp-mobile)
+      gap: 20px
+
+  &__field
+    width: 100%
+
+  // --- Footer ---
+
+  &__footer
+    display: flex
+    flex-direction: column
+    gap: 24px
+
+    @media (max-width: $bp-mobile)
+      gap: 20px
+
+  &__terms
+    margin-top: 1px
+    font-size: 0.875rem
+
+    @media (max-width: $bp-mobile)
+      font-size: 0.75rem
+
+  &__submit
+    width: 100%
+
+  &__login-prompt
+    margin: 6px 0 0
+    color: var(--neutral-400)
+    font-size: 0.875rem
+    text-align: center
+
+  // --- Links ---
+
+  &__legal-link,
+  &__login-link
+    color: var(--lime-500)
+    text-decoration: underline
+    text-underline-offset: 4px
+    cursor: pointer
+    transition: color 0.15s ease
+
+    @media (prefers-reduced-motion: reduce)
+      transition: none
+
+    &:hover
+      color: var(--lime-400)
+
+    &:focus-visible
+      outline: 2px solid var(--lime-500)
+      outline-offset: 3px
+
+  // --- Success state ---
+
+  &__success
+    flex: 1
+    display: flex
+    flex-direction: column
+    justify-content: center
+    min-width: 0
+    transform: translateY(-8px)
+
+    @media (max-width: $bp-mobile)
+      min-height: 326px
+      transform: none
+
+  &__success-icon
+    display: block
+    width: 78px
+    height: 72px
+    margin-left: -20px
+    object-fit: contain
+
+  &__success-title
+    margin: 16px 0
+    color: var(--neutral-100)
+    font-family: var(--font-display)
+    font-size: 1.5rem
+    font-weight: 800
+    line-height: 1.25
+    letter-spacing: 0.02em
+    text-transform: uppercase
+    white-space: nowrap
+
+    @media (max-width: $bp-mobile)
+      font-size: 1.25rem
+      white-space: normal
+
+    &::before
+      content: "//"
+      margin-right: 12px
+      color: var(--lime-500)
+
+  &__success-message
+    margin: 0
+    color: var(--neutral-400)
+    font-family: var(--font-mono)
+    font-size: 0.875rem
+    line-height: 1.6
+
+    strong
+      color: var(--lime-500)
+      font-weight: 400
+
+  &__success-continue
+    display: block
+    width: 100%
+    margin-top: 33px
+
+// ==============================
+// Utilities
+// ==============================
+
+.desktop-content
+  display: block
+
+  @media (max-width: $bp-mobile)
+    display: none

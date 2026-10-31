@@ -1,0 +1,7 @@
+<button
+  [type]="type"
+  [disabled]="disabled || loading"
+  [class]="buttonClasses.join(' ')"
+>
+  <span>{{ loading ? 'TRANSMITTING_' : label }}</span>
+</button>

@@ -1,0 +1,38 @@
+<!-- <div class="input-container">
+    <label>
+        <span class="chevron">›</span>
+        {{ label }}
+    </label>
+
+    <input type="text" [value]="value ?? ''" [placeholder]="placeholder" [disabled]="disabled" [required]="required"
+        (input)="handleInput($event)" (blur)="handleBlur()" />
+
+
+
+   
+</div> -->
+
+
+<div class="input-field">
+    <label class="input-field__label" [for]="inputId">
+        <span class="input-field__chevron" aria-hidden="true">›</span>
+        {{ label }}
+    </label>
+
+    <div class="input-field__control">
+        <input class="input-field__input" [id]="inputId" type="text" [value]="value ?? ''" [placeholder]="placeholder"
+            [disabled]="disabled" [required]="required" (input)="handleInput($event)" />
+    </div>
+
+    <div *ngIf="onErrors() as error; else elseBlock" class="input-field__errors" aria-live="polite">
+        <span class="input-field__error">
+            {{ error }}
+        </span>
+    </div>
+
+    <ng-template #elseBlock>
+        <span class="input-field__hint" *ngIf="information">
+            {{ information }}
+        </span>
+    </ng-template>
+</div>
