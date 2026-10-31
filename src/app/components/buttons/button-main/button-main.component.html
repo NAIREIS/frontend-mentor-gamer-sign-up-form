@@ -2,6 +2,9 @@
   [type]="type"
   [disabled]="disabled || loading"
   [class]="buttonClasses.join(' ')"
+  [attr.aria-busy]="loading"
+  [attr.aria-label]="loading ? 'Submitting registration' : null"
 >
-  <span>{{ loading ? 'TRANSMITTING_' : label }}</span>
+  <span>{{ loading ? 'TRANSMITTING' : label }}</span>
+
 </button>
