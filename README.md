@@ -1,27 +1,117 @@
-# FrontendMentorGamerSignUpForm
+# NEONCORE — Gamer Sign-up Form
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.16.
+A responsive gamer sign-up form built with Angular, TypeScript, and SCSS. This project focuses on reusable components, form validation, password security feedback, and an interactive user experience.
 
-## Development server
+## Preview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![NEONCORE Gamer Sign-up Form](./preview.png)
 
-## Code scaffolding
+**Live Demo:** [View Live Site](https://naireis.github.io/frontend-mentor-gamer-sign-up-form/)
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+**Frontend Mentor Challenge:** [View Challenge](https://www.frontendmentor.io/profile/NAIREIS)
 
-## Build
+## Features
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+- Responsive layout for different screen sizes.
+- Reusable input components built with Angular.
+- Reactive Forms for centralized form state management.
+- Custom validators for form fields.
+- Password visibility toggle.
+- Password strength indicator.
+- Terms and conditions acceptance.
+- Field validation and error messages.
+- Loading state with a simulated submission delay.
+- Success screen after successful form submission.
+- Reusable button and input components.
 
-## Running unit tests
+## Built With
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+- Angular
+- TypeScript
+- SCSS / Sass
+- Angular Reactive Forms
+- ControlValueAccessor
+- Custom Angular Validators
+- BEM methodology
+- CSS Flexbox and Grid
+- Responsive Web Design
 
-## Running end-to-end tests
+## Form States
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+The application implements different interaction states:
 
-## Further help
+1. **Initial State:** Empty registration form.
+2. **Validation State:** Displays field errors when validation requirements are not met.
+3. **Password Feedback:** Allows users to toggle password visibility and check password strength.
+4. **Loading State:** Disables submission while displaying a simulated processing message.
+5. **Success State:** Displays a confirmation message after successful submission.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Accessibility
+
+Accessibility considerations implemented and being refined include:
+
+- Semantic HTML elements.
+- Explicit labels for form inputs.
+- Native form controls.
+- Dynamic success announcements using `role="status"` and `aria-live`.
+- Decorative images with empty alternative text.
+- Validation feedback for form fields.
+
+## What I Learned
+
+This challenge helped me improve my Angular development skills, especially when building reusable form components with ControlValueAccessor.
+
+I practiced centralizing form-control behavior, implementing custom validators, managing reactive form states, and creating reusable components without duplicating logic.
+
+I also explored password strength feedback, conditional rendering, loading states, and success feedback.
+
+Another important learning experience was understanding the importance of accessibility, particularly how labels, validation messages, ARIA attributes, and keyboard interactions improve the user experience.
+
+Overall, this project strengthened my understanding of component architecture, clean code principles, and building maintainable interfaces with Angular.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js
+- npm
+- Angular CLI (optional)
+
+### Installation
+
+Clone the repository:
+
+```bash
+git clone https://github.com/NAIREIS/frontend-mentor-gamer-sign-up-form.git
+```
+
+Navigate to the project directory:
+
+```bash
+cd frontend-mentor-gamer-sign-up-form
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Run the development server:
+
+```bash
+npx ng serve
+```
+
+Open your browser at:
+
+```text
+http://localhost:4200/
+```
+
+## Author
+
+**Naiane Reis**
+
+- GitHub: [@NaianeReis27](https://github.com/NAIREIS)
+- Frontend Mentor: [Your Frontend Mentor Profile](https://www.frontendmentor.io/profile/NAIREIS)

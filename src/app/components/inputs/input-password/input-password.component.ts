@@ -14,6 +14,9 @@ export class InputPasswordComponent extends BaseInputComponent<string> {
 
   visiblePassword = false;
 
+  handleBlur(): void {
+    this.markAsTouched();
+  }
 
   toggleVisibitity(): void {
     this.visiblePassword = !this.visiblePassword;
